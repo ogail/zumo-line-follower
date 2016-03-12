@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include </Users/elogeela/Documents/projects/zumo-line-follower/lib/ZumoMotors/ZumoMotors.h>
-#include </Users/elogeela/Documents/projects/zumo-line-follower/lib/QTRSensors/src/QTRSensors.h>
+#include <ZumoMotors.h>
+#include <QTRSensors.h>
 
 /*
  * This example uses the ZumoMotors library to follow a black line.
