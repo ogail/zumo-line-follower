@@ -1,6 +1,5 @@
 #include <Arduino.h>
-
-#include <ZumoMotors.h>
+#include </Users/elogeela/Documents/projects/zumo-line-follower/lib/ZumoMotors/ZumoMotors.h>
 
 /*
  * This example uses the ZumoMotors library to drive each motor on the Zumo
@@ -18,77 +17,11 @@ ZumoMotors motors;
 void setup()
 {
   pinMode(LED_PIN, OUTPUT);
-
-  // uncomment one or both of the following lines if your motors' directions need to be flipped
-  //motors.flipLeftMotor(true);
-  //motors.flipRightMotor(true);
 }
 
 void loop()
 {
-  // run left motor forward
-
   digitalWrite(LED_PIN, HIGH);
-
-  for (int speed = 0; speed <= 400; speed++)
-  {
-    motors.setLeftSpeed(speed);
-    delay(2);
-  }
-
-  for (int speed = 400; speed >= 0; speed--)
-  {
-    motors.setLeftSpeed(speed);
-    delay(2);
-  }
-
-  // run left motor backward
-
-  digitalWrite(LED_PIN, LOW);
-
-  for (int speed = 0; speed >= -400; speed--)
-  {
-    motors.setLeftSpeed(speed);
-    delay(2);
-  }
-
-  for (int speed = -400; speed <= 0; speed++)
-  {
-    motors.setLeftSpeed(speed);
-    delay(2);
-  }
-
-  // run right motor forward
-
-  digitalWrite(LED_PIN, HIGH);
-
-  for (int speed = 0; speed <= 400; speed++)
-  {
-    motors.setRightSpeed(speed);
-    delay(2);
-  }
-
-  for (int speed = 400; speed >= 0; speed--)
-  {
-    motors.setRightSpeed(speed);
-    delay(2);
-  }
-
-  // run right motor backward
-
-  digitalWrite(LED_PIN, LOW);
-
-  for (int speed = 0; speed >= -400; speed--)
-  {
-    motors.setRightSpeed(speed);
-    delay(2);
-  }
-
-  for (int speed = -400; speed <= 0; speed++)
-  {
-    motors.setRightSpeed(speed);
-    delay(2);
-  }
-
+  motors.setSpeeds(50, 50);
   delay(500);
 }
