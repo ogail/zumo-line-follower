@@ -18,6 +18,7 @@ ZumoReflectanceSensorArray reflectanceSensors;
 unsigned int sensorValues[NUM_SENSORS];
 double Kp = 0;
 int offset = 0;
+int integral = 0;
 Pushbutton button(ZUMO_BUTTON);
 ZumoMotors motors;
 
@@ -93,7 +94,11 @@ void loop()
   digitalWrite(LED_PIN, HIGH);
   int position = reflectanceSensors.readLine(sensorValues);
   int error = position - offset;
-  int turn = Kp * error;
+  integral += error;
+  if ((integral < 0) == (error < 0)) {
+    integral = 0;
+  }
+  int turn = Kp * error + integral;
   int leftSpeed = MAX_SPEED + turn;
   int rightSpeed = MAX_SPEED - turn;
   /*
